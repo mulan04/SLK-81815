@@ -19,7 +19,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Run Aqua scanner
+      - name: Aqua code scanning(SCA,IaC and SAST)
         uses: docker://aquasec/aqua-scanner
         with:
           args: trivy fs --security-checks config,vuln,secret --sast .
@@ -45,12 +45,12 @@ jobs:
           password: ${{ secrets.AQUADEV_PASS }}
       
       # Scan the Image
-      - name: Run the scanner 
+      - name: Image scanning
         run: |
           docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:2022.4 scan --host ${{ secrets.AQUA_HOST }} --local aquasupportemea/insecure-bank-app:${{ github.sha }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --no-verify --html > .github/workflows/scan-output.html
           
      # Runs docker push 
-      - name: Build docker image
+      - name: Docker Image Push
         run: sudo docker push aquasupportemea/insecure-bank-app:${{ github.sha }} .   
           
       - name: SBOM Generation
@@ -73,4 +73,4 @@ jobs:
             # The docker image name:tag of the newly built image
             # --artifact-path "my-image-name:${{ env.tag-version }}" 
             # OR the path to the root folder of your project. I.e my-repo/my-app 
-            ## --artifact-path "${{env.MY_APP_ROOT}}"
+            # --artifact-path "${{env.MY_APP_ROOT}}"
