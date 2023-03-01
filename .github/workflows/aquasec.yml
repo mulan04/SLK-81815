@@ -51,7 +51,7 @@ jobs:
           
      # Runs docker push 
       - name: Docker Image Push
-        run: sudo docker push aquasupportemea/insecure-bank-app:${{ github.sha }} .   
+        run: sudo docker push aquasupportemea/insecure-bank-app:${{ github.sha }}  
           
       - name: SBOM Generation
         run: |
