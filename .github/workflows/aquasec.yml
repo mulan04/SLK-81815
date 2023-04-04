@@ -1,1 +1,26 @@
-
+#
+name: build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: 
+      - main
+      # comment
+jobs:
+  checkout:
+    name: Checkout
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout code
+      - name: Login to DockerHub
+      - name: Aqua code scanning(SCA,IaC and SAST)
+      # Runs docker build 
+      - name: Build docker image
+      # Aqua Registry login
+      - name: Login to Aqua Registry
+      - name: Image scanning
+     # Runs docker push 
+      - name: Docker Image Push
+      - name: SBOM Generation
