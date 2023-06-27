@@ -28,10 +28,11 @@ pipeline {
               sh '''
                 ls -la
                 export TRIVY_RUN_AS_PLUGIN=aqua
-                trivy fs --scanners config,vuln,secret . ; echo $?
+                trivy fs --scanners config,vuln,secret .
                 # To customize which severities to scan for, add the following flag: --severity UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
                 # To enable SAST scanning, add: --sast
                 # To enable npm/dotnet non-lock file scanning, add: --package-json / --dotnet-proj
+                echo $?
               '''
             }
           }
