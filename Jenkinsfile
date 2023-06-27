@@ -33,6 +33,7 @@ pipeline {
                 # To enable SAST scanning, add: --sast
                 # To enable npm/dotnet non-lock file scanning, add: --package-json / --dotnet-proj
                 echo $?
+                echo "Das war es"
               '''
             }
           }
