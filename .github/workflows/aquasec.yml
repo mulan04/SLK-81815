@@ -11,10 +11,16 @@ jobs:
   checkout:
     name: Checkout
     runs-on: ubuntu-latest
-    using: 'node20'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+#        using: 'node20'
+       
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
