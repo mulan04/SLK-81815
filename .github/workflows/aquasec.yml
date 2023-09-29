@@ -77,7 +77,7 @@ jobs:
         run: |
           docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:2022.4 scan --host ${{ secrets.AQUA_HOST }} --local aquasupportemea/insecure-bank-app:${{ github.sha }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --no-verify --html > .github/workflows/scan-output.html
           
-     # Runs docker push 
+#     # Runs docker push 
 #      - name: Docker Image Push
 #        run: sudo docker push aquasupportemea/insecure-bank-app:${{ github.sha }}  
           
@@ -93,7 +93,7 @@ jobs:
           BINDIR="." sh install.sh
           rm install.sh install.sh.checksum
           ./billy generate \
-#            --access-token "${{ github.token }}" \
+            # --access-token "${{ github.token }}" \
             --access-token "${{ secrets.GH_TOKEN }}" \
             --aqua-key "${{ secrets.AQUA_KEY }}" \
             --aqua-secret "${{ secrets.AQUA_SECRET }}" \
