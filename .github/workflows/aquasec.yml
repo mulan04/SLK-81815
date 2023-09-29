@@ -26,7 +26,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Aqua code scanning(SCA,IaC and SAST)
+#      - name: Aqua code scanning(SCA,IaC and SAST)
 #        uses: docker://aquasec/aqua-scanner
 #        with:
 #          args: trivy fs --security-checks config,vuln,secret --sast .
