@@ -26,11 +26,6 @@ jobs:
           aqua-key: ${{ secrets.AQUA_KEY }}
           aqua-secret: ${{ secrets.AQUA_SECRET }}
        
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Aqua code scanning(SCA,IaC and SAST)
         uses: docker://aquasec/aqua-scanner
         with:
@@ -67,10 +62,6 @@ jobs:
         run: |
           docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:2022.4 scan --host ${{ secrets.AQUA_HOST }} --local aquasupportemea/insecure-bank-app:${{ github.sha }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --no-verify --html > .github/workflows/scan-output.html
           
-#     # Runs docker push 
-#      - name: Docker Image Push
-#        run: sudo docker push aquasupportemea/insecure-bank-app:${{ github.sha }}  
-          
       - name: SBOM Generation
         run: |
           export BILLY_SERVER=https://billy.codesec.aquasec.com
@@ -92,3 +83,14 @@ jobs:
             # --artifact-path "my-image-name:${{ env.tag-version }}" 
             # OR the path to the root folder of your project. I.e my-repo/my-app 
             ## --artifact-path "${{env.MY_APP_ROOT}}"
+
+#      - name: Login to DockerHub
+#        uses: docker/login-action@v2
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+#     # Runs docker push 
+#      - name: Docker Image Push
+#        run: sudo docker push aquasupportemea/insecure-bank-app:${{ github.sha }}  
+          
