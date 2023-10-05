@@ -30,7 +30,8 @@ jobs:
         uses: docker://aquasec/aqua-scanner
         with:
 #org          args: trivy fs --scanners config,vuln,secret .
-          args: trivy fs --scanners config,vuln,secret --sast .
+#ok          args: trivy fs --scanners config,vuln,secret --sast .
+          args: trivy fs --scanners config,vuln --sast --reachability .
 #          args: trivy fs --security-checks config,vuln,secret --sast .
           # To customize which severities to scan for, add the following flag: --severity UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
           # To enable SAST scanning, add: --sast
