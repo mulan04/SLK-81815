@@ -27,9 +27,11 @@ jobs:
         with:
           aqua-key: ${{ secrets.AQUA_KEY }}
           aqua-secret: ${{ secrets.AQUA_SECRET }}
+
+      - name: List files
+        run: ls -l .
        
       - name: Aqua code scanning(SCA,IaC and SAST)
-        run: ls -l .
         uses: docker://aquasec/aqua-scanner
         with:
 #org          args: trivy fs --scanners config,vuln,secret .
