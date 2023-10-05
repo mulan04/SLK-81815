@@ -29,11 +29,10 @@ jobs:
           aqua-secret: ${{ secrets.AQUA_SECRET }}
 
       - name: List files
-        run:  pwd && \
-              ls -l . && \
-              ls -l /
-              # && \
-              # git config --global --add safe.directory /github/workspace
+        run:  pwd &&
+              ls -l . &&
+              ls -l / &&
+              git config --global --add safe.directory /github/workspace
        
       - name: Aqua code scanning(SCA,IaC and SAST)
         uses: docker://aquasec/aqua-scanner
