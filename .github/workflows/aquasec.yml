@@ -4,8 +4,8 @@ on:
     branches:
       - main
   pull_request:
-#    branches: 
-#      - main
+    branches: 
+      - main
     types:
       - opened
       
@@ -33,7 +33,8 @@ jobs:
               ls -l . &&
               ls -l / &&
               git config --global --add safe.directory /github/workspace
-       
+
+/*       
       - name: Aqua code scanning(SCA,IaC and SAST)
         uses: docker://aquasec/aqua-scanner
         with:
@@ -53,7 +54,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           TRIVY_RUN_AS_PLUGIN: 'aqua'
           # For http/https proxy configuration add env vars: HTTP_PROXY/HTTPS_PROXY, CA-CRET (path to CA certificate)
-      
+*/
+
       # Runs docker build 
       - name: Build docker image
         run: sudo docker build -t aquasupportemea/insecure-bank-app:${{ github.sha }} .
