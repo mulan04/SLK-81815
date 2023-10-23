@@ -1,0 +1,25 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: 
+      - main
+    types:
+      - opened
+      
+jobs:
+  checkout:
+    name: Checkout1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: List files
+        run:  pwd &&
+              ls -l . &&
+              ls -l / &&
+              git config --global --add safe.directory /github/workspace
+
