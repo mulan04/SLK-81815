@@ -21,7 +21,8 @@ jobs:
           ENABLE_TRIVY_STDOUT: 'true'
           AQUA_KEY: ${{ secrets.AQUA_KEY }}
           AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+#          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TRIVY_RUN_AS_PLUGIN: 'aqua'
 
 
