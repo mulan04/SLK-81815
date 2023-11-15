@@ -1,4 +1,4 @@
-name: 2 Aqua code scanning pipeline
+name: Aqua code scanning pipeline
 
 on:
   push:
