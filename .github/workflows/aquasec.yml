@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  first_pipeline:
+  Aqua_code_scanning_pipeline:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,8 +26,8 @@ jobs:
           TRIVY_RUN_AS_PLUGIN: 'aqua'
 
 
-  second_pipeline:
-#    needs: first_pipeline
+  SBOM_generation_pipeline:
+#    needs: Aqua_code_scanning_pipeline
     runs-on: ubuntu-latest
 
     steps:
