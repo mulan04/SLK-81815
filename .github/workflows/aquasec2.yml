@@ -1,4 +1,4 @@
-name: Two Pipelines Example
+name: SBOM generation pipeline
 
 on:
   push:
