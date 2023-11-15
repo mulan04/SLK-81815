@@ -1,4 +1,4 @@
-name: One Pipelines Example
+name: Aqua code scanning pipeline
 
 on:
   push:
