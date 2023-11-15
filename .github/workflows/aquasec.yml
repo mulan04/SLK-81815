@@ -27,7 +27,7 @@ jobs:
 
 
   second_pipeline:
-    needs: first_pipeline
+#    needs: first_pipeline
     runs-on: ubuntu-latest
 
     steps:
