@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches: 
+      - main
+    types:
+      - opened
 
 jobs:
   Aqua_code_scanning_pipeline:
