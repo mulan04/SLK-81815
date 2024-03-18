@@ -1,8 +1,5 @@
 name: Aqua
-on:
-  push:
-    branches:
-      - main
+on: pull_request
 jobs:
   aqua:
     name: Aqua scanner
@@ -25,4 +22,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           TRIVY_RUN_AS_PLUGIN: 'aqua'
           # For http/https proxy configuration add env vars: HTTP_PROXY/HTTPS_PROXY, CA-CRET (path to CA certificate)
-
+          
+          
+  
