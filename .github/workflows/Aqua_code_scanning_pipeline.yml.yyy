@@ -1,0 +1,31 @@
+name: Aqua code scanning pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: 
+      - main
+    types:
+      - opened
+
+jobs:
+  Aqua_code_scanning_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Aqua code scanning (SCA,IaC and SAST)
+        uses: docker://aquasec/aqua-scanner
+        with:
+          args: trivy fs --scanners config,vuln,secret --sast .
+        env:
+          ENABLE_TRIVY_STDOUT: 'true'
+          AQUA_KEY: ${{ secrets.AQUA_KEY }}
+          AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
+#          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TRIVY_RUN_AS_PLUGIN: 'aqua'
